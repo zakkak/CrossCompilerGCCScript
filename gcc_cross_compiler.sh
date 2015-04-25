@@ -12,7 +12,7 @@ TARGET=microblaze-xilinx-elf
 PROGRAM_PREFIX=mb-
 
 BUILD_DIR=build
-INSTALL_DIR=$PWD/install 
+INSTALL_DIR=/opt/mb-gcc-5.1.0
 
 CORES=8
 
@@ -90,14 +90,14 @@ function build()
 		echo "Failed to configure"
 		exit 1;
 	fi
-	env 
+	env
 	make -j"$CORES" all$3
 	if [ $? != 0 ]
 	then
 		echo "Failed to build"
 		exit 1;
 	fi
-	make install$3
+	sudo make install$3
 	if [ $? != 0 ]
 	then
 		echo "Failed to install"
