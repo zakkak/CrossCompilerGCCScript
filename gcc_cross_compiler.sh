@@ -28,6 +28,9 @@ GCC=${GCC_FILE%.tar.*}
 BINUTILS=${BINUTILS_FILE%.tar.*}
 NEWLIB=${NEWLIB_FILE%.tar.*}
 
+# Explicitly define the PATH to avoid ambiguities.  Especially '.'
+# should not be present in PATH.
+export PATH=/usr/local/bin:/usr/bin
 
 
 # target
@@ -138,7 +141,7 @@ extract "$BINUTILS_FILE" "$BINUTILS"
 build $BINUTILS "" ""
 
 # put results into PATH.
-export PATH=$PATH:$INSTALL_DIR/bin/
+export PATH=$INSTALL_DIR/bin/:$PATH
 
 echo "Building gcc-stage1"
 extract "$GCC_FILE" "$GCC"
