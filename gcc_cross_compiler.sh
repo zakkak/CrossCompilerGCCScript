@@ -3,8 +3,9 @@
 ##
 # Script to build GCC for microblaze.
 # Written by Martijn Koedam (m.l.p.j.koedam@tue.nl)
+# Modified by Foivos S. Zakkak (foivos@zakkak.net)
 #
-# Current version is testing on ubuntu 11.04, 11.10 and 12.04
+# Current version is tested on Archlinux
 ##
 
 TARGET=microblaze-xilinx-elf
@@ -15,9 +16,9 @@ INSTALL_DIR=$PWD/install
 
 CORES=8
 
-GCC_URL=ftp://ftp.nluug.nl/mirror/languages/gcc/releases/gcc-4.7.0/gcc-4.7.0.tar.bz2
-NEWLIB_URL=ftp://sources.redhat.com/pub/newlib/newlib-1.20.0.tar.gz
-BINUTILS_URL=http://ftp.gnu.org/gnu/binutils/binutils-2.22.tar.bz2
+GCC_URL=https://ftp.gnu.org/gnu/gcc/gcc-5.1.0/gcc-5.1.0.tar.gz
+NEWLIB_URL=ftp://sourceware.org/pub/newlib/newlib-2.2.0.tar.gz
+BINUTILS_URL=https://ftp.gnu.org/gnu/binutils/binutils-2.25.tar.gz
 
 GCC_FILE=$(basename $GCC_URL)
 NEWLIB_FILE=$(basename $NEWLIB_URL)
