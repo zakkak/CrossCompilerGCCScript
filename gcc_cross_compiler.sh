@@ -30,7 +30,7 @@ NEWLIB=${NEWLIB_FILE%.tar.*}
 
 # Explicitly define the PATH to avoid ambiguities.  Especially '.'
 # should not be present in PATH.
-export PATH=/usr/local/bin:/usr/bin
+export PATH=/usr/local/bin:/usr/bin:/bin
 
 
 # target
