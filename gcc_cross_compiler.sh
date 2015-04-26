@@ -8,7 +8,7 @@
 # Current version is tested on Archlinux
 ##
 
-TARGET=microblaze-xilinx-elf
+TARGET=microblazeel-xilinx-elf
 PROGRAM_PREFIX=mb-
 
 BUILD_DIR=build
@@ -146,7 +146,7 @@ export PATH=$INSTALL_DIR/bin/:$PATH
 echo "Building gcc-stage1"
 extract "$GCC_FILE" "$GCC"
 gcc_dependencies "$GCC"
-build $GCC "--enable-languages=c --disable-nls --without-headers --disable-multilib --disable-libssp --with-newlib" "-host"
+build $GCC "--enable-languages=c --disable-nls --without-headers --disable-multilib --disable-libssp --with-newlib --with-libgloss" "-host"
 
 echo "Building newlib"
 extract "$NEWLIB_FILE" "$NEWLIB"
@@ -155,4 +155,6 @@ build $NEWLIB "--enable-newlib-hw-fp" ""
 
 echo "Building gcc,g++ stage2"
 extract "$GCC_FILE" "$GCC"
-build $GCC "--enable-languages=c,c++ --disable-nls --without-headers --disable-multilib --disable-libssp --with-newlib" ""
+build $GCC "--enable-languages=c,c++ --disable-nls --without-headers --disable-multilib --disable-libssp --with-newlib --with-libgloss" ""
+
+sudo ln -s $PREFIX/$TARGET/lib/libgloss.a $PREFIX/$TARGET/lib/libxil.a
