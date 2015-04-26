@@ -97,7 +97,7 @@ function build()
 		echo "Failed to build"
 		exit 1;
 	fi
-	sudo make install$3
+	sudo env "PATH=$PATH" make install$3
 	if [ $? != 0 ]
 	then
 		echo "Failed to install"
@@ -157,4 +157,4 @@ echo "Building gcc,g++ stage2"
 extract "$GCC_FILE" "$GCC"
 build $GCC "--enable-languages=c,c++ --disable-nls --without-headers --disable-multilib --disable-libssp --with-newlib --with-libgloss" ""
 
-sudo ln -s $PREFIX/$TARGET/lib/libgloss.a $PREFIX/$TARGET/lib/libxil.a
+sudo env "PREFIX=$PREFIX;TARGET=$TARGET" ln -s $PREFIX/$TARGET/lib/libgloss.a $PREFIX/$TARGET/lib/libxil.a
